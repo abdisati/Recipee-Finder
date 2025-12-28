@@ -12,7 +12,8 @@ searchInput.addEventListener("keydown",(e)=>{
 
 async function searchRecipe(){
     //get the search input
-    const query=searchInput.trim();
+    const query=searchInput.value.trim();
+    console.log(query);
     //check if it is empty
     if(!query){
         alert("Please enter a recipe name");
@@ -52,7 +53,9 @@ function displayRecipes(meals){
         `;
 
         card.addEventListener("click",()=>{
-            alert(meal.strInstructions);
+            localStorage.setItem("instructions",meal.strInstructions);
+            localStorage.setItem("mealName",meal.strMeal);
+            window.location.href="recipe.html";
         });
 
         results.appendChild(card);
